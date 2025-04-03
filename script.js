@@ -92,21 +92,3 @@ pinInput.addEventListener('input', (e) => {
 document.getElementById('check').addEventListener('click', test);
 
 main();
-async function bruteForceCrack() {
-  const targetHash = document.getElementById('sha256-hash').innerHTML;
-
-  for (let num = 100; num <= 999; num++) {
-    let hashedNum = await sha256(num.toString());
-    if (hashedNum === targetHash) {
-      console.log(`Found! The correct number is: ${num}`);
-      document.getElementById('result').innerHTML = `🎉 Success! The number is ${num}`;
-      return;
-    }
-  }
-
-  console.log("Failed to crack the hash.");
-  document.getElementById('result').innerHTML = `❌ Failed to find the number`;
-}
-
-document.getElementById('check').addEventListener('click', bruteForceCrack);
-
